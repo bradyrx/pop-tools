@@ -353,6 +353,26 @@ def get_grid(grid_name, scrip=False):
             },
         )
 
+        dso['HT'] = xr.DataArray(
+            HT,
+            dims=('nlat', 'nlon'),
+            attrs={
+                'units': 'cm',
+                'long_name': 'depth of ocean column on T grid',
+                'coordinates': 'TLONG TLAT',
+            },
+        )
+
+        dso['HU'] = xr.DataArray(
+            HU,
+            dims=('nlat', 'nlon'),
+            attrs={
+                'units': 'cm',
+                'long_name': 'depth of ocean column on U grid',
+                'coordinates': 'ULONG ULAT',
+            },
+        )
+
         dso['REGION_MASK'] = xr.DataArray(
             REGION_MASK,
             dims=('nlat', 'nlon'),
@@ -397,26 +417,6 @@ def get_grid(grid_name, scrip=False):
                 'units': 'cm',
                 'positive': 'down',
                 'long_name': 'depth from surface to bottom of layer',
-            },
-        )
-
-        dso['HT'] = xr.DataArray(
-            HT,
-            dims=('nlat', 'nlon'),
-            attrs={
-                'units': 'cm',
-                'long_name': 'depth of ocean column on T grid',
-                'coordinates': 'TLONG TLAT',
-            },
-        )
-
-        dso['HU'] = xr.DataArray(
-            HU,
-            dims=('nlat', 'nlon'),
-            attrs={
-                'units': 'cm',
-                'long_name': 'depth of ocean column on U grid',
-                'coordinates': 'ULONG ULAT',
             },
         )
 
