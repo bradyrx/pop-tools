@@ -26,3 +26,12 @@ def test_get_grid_scrip():
 def test_cesm_local_inputdata():
     cesm_dataroot = os.environ.get('CESMDATAROOT', None)
     assert pop_tools.grid.INPUTDATA.path.as_posix() == cesm_dataroot
+
+
+@pytest.mark.parametrize('grid', pop_tools.grid_defs.keys())
+def test_HT_HU_KMU_in_grid(grid):
+    print(grid)
+    ds = pop_tools.get_grid(grid)
+    assert 'HT' in ds, 'Missing variable HT'
+    assert 'HU' in ds, 'Missing variable HU'
+    assert 'KMU' in ds, 'Missing variable KMU'
